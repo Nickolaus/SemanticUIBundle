@@ -1,6 +1,6 @@
 <?php
 
-namespace nickolaus\SemanticUiBundle\Tests\Controller;
+namespace Nickolauss\SemanticUiBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

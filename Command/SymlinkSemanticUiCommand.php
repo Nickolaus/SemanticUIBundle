@@ -1,6 +1,6 @@
 <?php
 
-namespace nickolaus\SemanticUiBundle\Command;
+namespace Nickolauss\SemanticUiBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
