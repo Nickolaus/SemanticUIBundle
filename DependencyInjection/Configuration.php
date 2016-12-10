@@ -1,6 +1,6 @@
 <?php
 
-namespace Nickolauss\SemanticUiBundle\DependencyInjection;
+namespace nickolaus\SemanticUiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
