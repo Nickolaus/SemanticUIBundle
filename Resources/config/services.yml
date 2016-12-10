@@ -1,0 +1,4 @@
+services:
+#    nickolaus_semantic_ui.example:
+#        class: nickolaus\SemanticUiBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
