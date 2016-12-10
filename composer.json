@@ -3,7 +3,7 @@
     "description": "Symfony Bundle for Semantic UI",
     "type": "library",
     "autoload": {
-        "psr-4": { "nickolaus\\SemanticUiBundle": "" }
+        "psr-4": { "nickolaus\\SemanticUiBundle\\": "" }
     },
     "require": {
         "semantic/ui": ">=2.2.4"
