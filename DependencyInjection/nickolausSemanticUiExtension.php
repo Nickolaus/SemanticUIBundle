@@ -1,6 +1,6 @@
 <?php
 
-namespace nickolaus\SemanticUiBundle\DependencyInjection;
+namespace Nickolauss\SemanticUiBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
