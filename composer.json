@@ -2,11 +2,17 @@
     "name": "nickolaus/semantic-ui-bundle",
     "description": "Symfony Bundle for Semantic UI",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": { "nickolaus\\SemanticUiBundle": "" }
     },
     "require": {
+        "php": ">=5.3.3",
         "semantic/ui": ">=2.2.4"
     },
-    "license": "MIT"
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
+    }
 }
