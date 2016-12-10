@@ -1,6 +1,6 @@
 <?php
 
-namespace Nickolauss\SemanticUiBundle;
+namespace Nickolaus\SemanticUiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
