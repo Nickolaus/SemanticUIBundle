@@ -5,7 +5,6 @@ namespace Nickolaus\SemanticUiBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Exception\IOException;
 
 class SymlinkSemanticUiCommand extends ContainerAwareCommand
 {
@@ -18,7 +17,7 @@ class SymlinkSemanticUiCommand extends ContainerAwareCommand
     {
         $this
             ->setName('nickolaus:semantic-ui:symlink')
-            ->setDescription('Hello PhpStorm');
+            ->setDescription('Links Semantic UI dist files into the bundle\'s resources');
     }
 
     /**
@@ -32,10 +31,25 @@ class SymlinkSemanticUiCommand extends ContainerAwareCommand
         $container = $this->getContainer();
         $fileSystem = $container->get('filesystem');
         $rootDir = sprintf('%s/..', $container->get('kernel')->getRootDir());
-        $origin = sprintf('%s/vendor/semantic/ui/dist', $rootDir);
-        $destination = sprintf('%s/vendor/nickolaus/semantic-ui-bundle/Resources/public/semantic-ui', $rootDir);
+        $originDir = realpath(sprintf('%s/vendor/semantic/ui/dist', $rootDir));
+        $destinationDir = sprintf('%s/vendor/nickolaus/semantic-ui-bundle/Resources/public/semantic-ui', realpath($rootDir));
 
-        $fileSystem->symlink($origin, $destination, true);
+        $output->write('Creating symlinks... ');
+
+        foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($originDir)) AS $item) {
+            $relativePathName = substr($item->getPathname(), strlen($originDir), strlen($originDir));
+            $target           = sprintf('%s%s', $destinationDir, $relativePathName);
+            if (!$item->isDir()) {
+                if ('\\' === DIRECTORY_SEPARATOR) { // Windows => copy
+                    $fileSystem->copy($item->getPathName(), $target);
+                } else {
+                    $fileSystem->symlink($item->getPathName(), $target);
+                }
+            }
+        }
+
+        $output->writeln('<info>Done.</info>');
+        $output->writeln('Don\'t forget to run <info>assets:install</info>.');
 
     }
 }
